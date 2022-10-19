@@ -1,5 +1,5 @@
-import '../models/game.dart';
-import '../models/game_image.dart';
+import '../../models/game.dart';
+import '../../models/game_image.dart';
 
 List<Game> games = [
   Game(
@@ -111,7 +111,7 @@ List<Game> featuredGames = [
     title: 'Dragon Ball Z: Kakarot',
     coverImage: GameImage(
       url:
-          'https://cdn3.dualshockers.com/wp-content/uploads/2020/01/dbx-kakarot.png',
+          'https://cdn-cms.bnea.io/sites/default/files/games/boxart/196040502174625.jpg',
       title: '',
     ),
     description: '',

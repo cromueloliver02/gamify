@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:gamify/widgets/gmf_pagination.dart';
-import '../widgets/gmf_menu_button.dart';
+import '../widgets/gmf_featured_games_slider.dart';
+import '../widgets/gmf_gradient_overlay.dart';
+import '../widgets/gmf_pagination.dart';
+import '../widgets/gmf_menu_bar.dart';
 import '../data/data.dart';
 
 class HomScreen extends StatefulWidget {
@@ -24,39 +25,19 @@ class _HomScreenState extends State<HomScreen> {
           SizedBox(
             width: screenSize.width,
             height: screenSize.height / 2,
-            child: PageView(
+            child: GMFFeaturedGamesSlider(
+              currentIdx: _currentIdx,
+              featuredGames: featuredGames,
               onPageChanged: (idx) => setState(() => _currentIdx = idx),
-              children: featuredGames
-                  .map((d) => CachedNetworkImage(
-                        imageUrl: d.coverImage.url,
-                        fit: BoxFit.cover,
-                      ))
-                  .toList(),
             ),
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: Container(
+            child: GMFGradientOverlay(
               width: screenSize.width,
               height: screenSize.height * 0.75,
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
-                  stops: [0.65, 1],
-                  colors: [
-                    Color.fromRGBO(35, 45, 59, 1),
-                    Colors.transparent,
-                  ],
-                ),
-              ),
-              child: Text(
-                featuredGames[_currentIdx].title,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(fontSize: 40),
-              ),
+              currentIdx: _currentIdx,
+              featuredGames: featuredGames,
             ),
           ),
           Positioned(
@@ -70,26 +51,9 @@ class _HomScreenState extends State<HomScreen> {
           Positioned(
             top: 60,
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
               width: screenSize.width,
-              child: Row(
-                children: [
-                  GMFMenuButton(
-                    iconData: Icons.menu,
-                    onPressed: () {},
-                  ),
-                  const Spacer(),
-                  GMFMenuButton(
-                    iconData: Icons.search,
-                    onPressed: () {},
-                  ),
-                  const SizedBox(width: 15),
-                  GMFMenuButton(
-                    iconData: Icons.notifications_none,
-                    onPressed: () {},
-                  ),
-                ],
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: const GMFMenuBar(),
             ),
           ),
         ],

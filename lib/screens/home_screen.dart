@@ -10,17 +10,39 @@ class HomScreen extends StatelessWidget {
     final screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: SizedBox(
-        width: screenSize.width,
-        height: screenSize.height / 2,
-        child: PageView(
-          children: featuredGames
-              .map((d) => CachedNetworkImage(
-                    imageUrl: d.coverImage.url,
-                    fit: BoxFit.cover,
-                  ))
-              .toList(),
-        ),
+      body: Stack(
+        children: [
+          SizedBox(
+            width: screenSize.width,
+            height: screenSize.height / 2,
+            child: PageView(
+              children: featuredGames
+                  .map((d) => CachedNetworkImage(
+                        imageUrl: d.coverImage.url,
+                        fit: BoxFit.cover,
+                      ))
+                  .toList(),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              width: screenSize.width,
+              height: screenSize.height * 0.75,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                  stops: [0.65, 1],
+                  colors: [
+                    Color.fromRGBO(35, 45, 59, 1),
+                    Colors.transparent,
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

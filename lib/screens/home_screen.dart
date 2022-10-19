@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:gamify/widgets/gmf_pagination.dart';
 import '../widgets/gmf_menu_button.dart';
 import '../data/data.dart';
 
-class HomScreen extends StatelessWidget {
+class HomScreen extends StatefulWidget {
   const HomScreen({super.key});
+
+  @override
+  State<HomScreen> createState() => _HomScreenState();
+}
+
+class _HomScreenState extends State<HomScreen> {
+  var _currentIdx = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +25,7 @@ class HomScreen extends StatelessWidget {
             width: screenSize.width,
             height: screenSize.height / 2,
             child: PageView(
+              onPageChanged: (idx) => setState(() => _currentIdx = idx),
               children: featuredGames
                   .map((d) => CachedNetworkImage(
                         imageUrl: d.coverImage.url,
@@ -30,6 +39,7 @@ class HomScreen extends StatelessWidget {
             child: Container(
               width: screenSize.width,
               height: screenSize.height * 0.75,
+              padding: const EdgeInsets.symmetric(horizontal: 30),
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.bottomCenter,
@@ -41,6 +51,20 @@ class HomScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              child: Text(
+                featuredGames[_currentIdx].title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(fontSize: 40),
+              ),
+            ),
+          ),
+          Positioned(
+            left: 30,
+            top: 400,
+            child: GMFPagination(
+              count: featuredGames.length,
+              currentIdx: _currentIdx,
             ),
           ),
           Positioned(

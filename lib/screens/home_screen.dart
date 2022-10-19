@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import '../widgets/gmf_menu_button.dart';
 import '../data/data.dart';
 
 class HomScreen extends StatelessWidget {
@@ -29,7 +30,7 @@ class HomScreen extends StatelessWidget {
             child: Container(
               width: screenSize.width,
               height: screenSize.height * 0.75,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
@@ -39,6 +40,31 @@ class HomScreen extends StatelessWidget {
                     Colors.transparent,
                   ],
                 ),
+              ),
+            ),
+          ),
+          Positioned(
+            top: 60,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              width: screenSize.width,
+              child: Row(
+                children: [
+                  GMFMenuButton(
+                    iconData: Icons.menu,
+                    onPressed: () {},
+                  ),
+                  const Spacer(),
+                  GMFMenuButton(
+                    iconData: Icons.search,
+                    onPressed: () {},
+                  ),
+                  const SizedBox(width: 15),
+                  GMFMenuButton(
+                    iconData: Icons.notifications_none,
+                    onPressed: () {},
+                  ),
+                ],
               ),
             ),
           ),

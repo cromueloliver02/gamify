@@ -4,10 +4,12 @@ import '../widgets/gmf_game_card.dart';
 
 class GMFGameSlider extends StatelessWidget {
   final List<Game> games;
+  final bool showTitles;
 
   const GMFGameSlider({
     super.key,
     required this.games,
+    this.showTitles = true,
   });
 
   @override
@@ -21,7 +23,10 @@ class GMFGameSlider extends StatelessWidget {
         itemBuilder: (ctx, idx) {
           final game = games[idx];
 
-          return GMFGameCard(game: game);
+          return GMFGameCard(
+            game: game,
+            showTitle: showTitles,
+          );
         },
       ),
     );

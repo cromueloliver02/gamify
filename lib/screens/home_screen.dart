@@ -84,7 +84,10 @@ class _HomScreenState extends State<HomScreen> {
                             ),
                           ),
                           const SizedBox(height: 15),
-                          GMFGameSlider(games: games2),
+                          GMFGameSlider(
+                            games: games2,
+                            showTitles: false,
+                          ),
                         ],
                       ),
                     ),

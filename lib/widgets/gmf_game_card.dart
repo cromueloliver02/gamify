@@ -4,10 +4,12 @@ import '../models/game.dart';
 
 class GMFGameCard extends StatelessWidget {
   final Game game;
+  final bool showTitle;
 
   const GMFGameCard({
     super.key,
     required this.game,
+    required this.showTitle,
   });
 
   @override
@@ -56,12 +58,14 @@ class GMFGameCard extends StatelessWidget {
           SizedBox(
             width: gameCardWith,
             height: 35,
-            child: Text(
-              game.title,
-              maxLines: 2,
-              textAlign: TextAlign.left,
-              overflow: TextOverflow.ellipsis,
-            ),
+            child: showTitle
+                ? Text(
+                    game.title,
+                    maxLines: 2,
+                    textAlign: TextAlign.left,
+                    overflow: TextOverflow.ellipsis,
+                  )
+                : null,
           ),
         ],
       ),

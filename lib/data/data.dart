@@ -1,5 +1,5 @@
-import '../../models/game.dart';
-import '../../models/game_image.dart';
+import '../models/game.dart';
+import '../models/game_image.dart';
 
 List<Game> games = [
   Game(
@@ -58,7 +58,7 @@ List<Game> games2 = [
   Game(
     title: 'The Last of Us Part II',
     coverImage: GameImage(
-      url: 'https://mvpo.us/img/P6253.jpg',
+      url: 'https://i.ytimg.com/vi/Iua6ARPGg_g/maxresdefault.jpg',
       title: '',
     ),
     description: '',
@@ -67,8 +67,7 @@ List<Game> games2 = [
   Game(
     title: 'Sekiro: Shadows Die Twice',
     coverImage: GameImage(
-      url:
-          'https://onlysp.escapistmagazine.com/wp-content/uploads/2019/03/Sekiro-Shadows-Die-Twice-logo-art.jpg',
+      url: 'https://i.ytimg.com/vi/Rx8pbCN1OcU/maxresdefault.jpg',
       title: '',
     ),
     description: '',
